@@ -1,5 +1,5 @@
 /*
- * Copyright 2011 the original author or authors.
+ * Copyright 2011-2012 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the 'License');
  * you may not use this file except in compliance with the License.
@@ -19,30 +19,76 @@
  */
 class PrefuseGriffonPlugin {
     // the plugin version
-    def version = "0.1"
+    String version = '0.2'
     // the version or versions of Griffon the plugin is designed for
-    def griffonVersion = '0.9.4 > *' 
+    String griffonVersion = '0.9.5 > *'
     // the other plugins this plugin depends on
-    def dependsOn = [:]
+    Map dependsOn = [swing: '0.9.5']
     // resources that are included in plugin packaging
-    def pluginIncludes = []
+    List pluginIncludes = []
     // the plugin license
-    def license = 'Apache Software License 2.0'
+    String license = 'Apache Software License 2.0'
     // Toolkit compatibility. No value means compatible with all
     // Valid values are: swing, javafx, swt, pivot, gtk
-    def toolkits = ['swing']
+    List toolkits = ['swing']
     // Platform compatibility. No value means compatible with all
     // Valid values are:
     // linux, linux64, windows, windows64, macosx, macosx64, solaris
-    def platforms = []
+    List platforms = []
+    // URL where documentation can be found
+    String documentation = ''
+    // URL where source can be found
+    String source = 'https://github.com/griffon/griffon-prefuse-plugin'
 
-    def author = 'Andres Almiray'
-    def authorEmail = 'aalmiray@users.sourceforge.net'
-    def title = 'Graph visualizations with Prefuse'
-    def description = '''
-Graph visualizations with Prefuse
+    List authors = [
+        [
+            name: 'Andres Almiray',
+            email: 'aalmiray@yahoo.com'
+        ]
+    ]
+    String title = 'Graph visualizations with Prefuse'
+    String description = '''
+Graph/Tree visualizations via [Prefuse][1].
+
+Usage
+-----
+
+The following nodes will become available on a View script upon installing this plugin
+
+| *Node*        | *Property* | *Type*  | *Bindable* | *Notes*                    |
+| ------------- | ---------- | ------- | ---------- | -------------------------- |
+| display       | drag       | boolean | no         | may be a `DragControl` too |
+|               | pan        | boolean | no         | may be a `PanControl` too  |
+|               | zoom       | boolean | no         | may be a `ZoomControl` too |
+| visualization |            |         |            |                            |
+| graph         |            |         |            |                            |
+| tree          |            |         |            |                            |
+| table      |            |         |            |                            |
+
+Nodes are automatically added with `pf` as prefix, here's an example of their usage
+
+        pfdisplay(size: [720, 500], drag: true, pan: true, zoom: true) {
+            pfvisualization(id: 'visualization') {
+                pfgraph(id: 'graph') {
+                    current.addColumn 'name', String
+                    current.addColumn 'gender', String
+                }
+            }
+        }
+
+Configuration
+-------------
+
+Styles and shapes can be configured by placing a `GraphConfig.groovy` inside `griffon-app/conf`. This script accepts 
+two top level nodes: `shapes` and `styles`.
+
+
+### Example
+
+A port of Prefuse's [Example.java][2] can be found [here][3].
+
+[1]: http://http//prefuse.org
+[2]: http://prefuse.org/doc/manual/introduction/example/Example.java
+[3]: https://github.com/aalmiray/griffon_sample_apps/tree/master/misc/prefuse
 '''
-
-    // URL to the plugin's documentation
-    def documentation = 'http://griffon.codehaus.org/Prefuse+Plugin'
 }
