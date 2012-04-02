@@ -56,14 +56,14 @@ Usage
 The following nodes will become available on a View script upon installing this plugin
 
 | *Node*        | *Property* | *Type*  | *Bindable* | *Notes*                    |
-| ------------- | ---------- | ------- | ---------- | -------------------------- |
+| ------------- | ---------- | ------- | ---------- | -------------------------- |
 | display       | drag       | boolean | no         | may be a `DragControl` too |
 |               | pan        | boolean | no         | may be a `PanControl` too  |
 |               | zoom       | boolean | no         | may be a `ZoomControl` too |
 | visualization |            |         |            |                            |
 | graph         |            |         |            |                            |
 | tree          |            |         |            |                            |
-| table      |            |         |            |                            |
+| table         |            |         |            |                            |
 
 Nodes are automatically added with `pf` as prefix, here's an example of their usage
 
