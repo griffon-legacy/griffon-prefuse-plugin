@@ -33,7 +33,7 @@ class PrefuseGriffonAddon {
         }
     }
 
-    def factories = [
+    Map factories = [
         display: new DisplayFactory(),
         visualization: new VisualizationFactory(),
         graph: new GraphFactory(),
